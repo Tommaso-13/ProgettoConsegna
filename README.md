@@ -1,6 +1,6 @@
 # Pianificazione delle consegne di Laerte Antico Forno
 
-Project Work 23, Informatica per le Aziende Digitali (L-31).
+ Project Work 23, Informatica per le Aziende Digitali (L-31).
 
 Il programma cerca i percorsi di consegna più corti partendo dal deposito di Laterza verso cinque clienti (Ginosa, Castellaneta, Palagianello, Santeramo in Colle, Matera) e confronta i costi di due scenari:
 
