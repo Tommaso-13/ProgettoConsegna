@@ -1,0 +1,300 @@
+/* Colori usati in tutta la pagina */
+:root {
+    --sfondo: #f8fafc;
+    --sfondo-scheda: #ffffff;
+    --testo: #0f172a;
+    --testo-secondario: #475569;
+    --bordo: #e2e8f0;
+    --colore-a: #1d4ed8;
+    --colore-b: #c2410c;
+    --colore-b2: #0f766e;
+    --evidenziato: #eff6ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--testo);
+    background-color: var(--sfondo);
+}
+
+.contenitore {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Intestazione */
+.testata {
+    background-color: var(--testo);
+    color: #ffffff;
+    padding: 48px 0 32px 0;
+}
+
+.testata h1 {
+    margin: 8px 0;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.etichetta {
+    margin: 0;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.sottotitolo {
+    margin: 0;
+    max-width: 640px;
+    color: #e2e8f0;
+}
+
+/* Menu */
+.menu {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--sfondo-scheda);
+    border-bottom: 1px solid var(--bordo);
+}
+
+.menu .contenitore {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.menu a {
+    padding: 12px 8px;
+    color: var(--testo-secondario);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.menu a:hover,
+.menu a:focus {
+    color: var(--colore-a);
+}
+
+/* Sezioni */
+section {
+    padding: 40px 0 8px 0;
+    scroll-margin-top: 48px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0 0 16px 0;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 24px 0 8px 0;
+}
+
+p, ul {
+    max-width: 72ch;
+}
+
+.nota {
+    font-size: 14px;
+    color: var(--testo-secondario);
+}
+
+/* Tabelle */
+.tabella-scorrevole {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--sfondo-scheda);
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid var(--bordo);
+    padding: 8px 12px;
+    text-align: right;
+}
+
+th:first-child, td:first-child {
+    text-align: left;
+}
+
+thead th {
+    background-color: #f1f5f9;
+}
+
+.riga-totale td {
+    font-weight: 700;
+    background-color: var(--evidenziato);
+}
+
+/* Schede e colonne */
+.due-colonne {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.elenco-scenari {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.scheda-scenario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.griglia-grafici {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.scheda {
+    background-color: var(--sfondo-scheda);
+    border: 1px solid var(--bordo);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.scheda h3 {
+    margin-top: 0;
+}
+
+.grafo {
+    width: 100%;
+    height: auto;
+    background-color: var(--sfondo);
+    border: 1px solid var(--bordo);
+    border-radius: 8px;
+}
+
+.giro {
+    margin: 8px 0;
+    padding-left: 12px;
+    border-left: 4px solid var(--colore-a);
+}
+
+.giro p {
+    margin: 0;
+}
+
+.riquadro-grafico {
+    position: relative;
+    height: 280px;
+}
+
+.risultato {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: var(--evidenziato);
+    border-radius: 8px;
+    max-width: none;
+}
+
+/* Modulo per provare i prezzi */
+.modulo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    background-color: var(--sfondo-scheda);
+    border: 1px solid var(--bordo);
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.campo label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+}
+
+.campo input:focus,
+.bottone:focus {
+    outline: 3px solid #93c5fd;
+    outline-offset: 1px;
+}
+
+.bottone {
+    min-height: 44px;
+    padding: 8px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: var(--colore-a);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.bottone:hover {
+    background-color: #1e40af;
+}
+
+.piede {
+    margin-top: 48px;
+    padding: 24px 0;
+    border-top: 1px solid var(--bordo);
+    font-size: 14px;
+    color: var(--testo-secondario);
+}
+
+/* Su schermi piu' larghi metto le schede una accanto all'altra */
+@media (min-width: 800px) {
+    .testata h1 {
+        font-size: 40px;
+    }
+
+    .due-colonne {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .griglia-grafici {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .scheda-scenario {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+
+    .modulo {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: end;
+    }
+
+    .modulo .bottone {
+        grid-column: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Consegne Laerte Antico Forno - TSP e VRP</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+<header class="testata">
+    <div class="contenitore">
+        <p class="etichetta">Project Work 23 - Informatica per le Aziende Digitali</p>
+        <h1>Pianificazione delle consegne di Laerte Antico Forno</h1>
+        <p class="sottotitolo">Confronto tra un furgone grande e due furgoni piccoli per le consegne giornaliere dal deposito di Laterza (TA)</p>
+    </div>
+</header>
+
+<nav class="menu">
+    <div class="contenitore">
+        <a href="#contesto">Contesto</a>
+        <a href="#dati">Dati</a>
+        <a href="#percorsi">Percorsi</a>
+        <a href="#costi">Costi</a>
+        <a href="#sensibilita">Variazione prezzi</a>
+        <a href="#prova">Prova tu</a>
+    </div>
+</nav>
+
+<main class="contenitore">
+
+    <section id="contesto">
+        <h2>1. L'azienda e il problema</h2>
+        <p>Laerte Antico Forno è un panificio di Laterza che produce pane e prodotti da forno. Ogni mattina la merce parte dal deposito di Laterza e va consegnata a cinque clienti nei comuni vicini. Il pane è un prodotto che deve arrivare fresco, quindi conta sia quanto si spende sia a che ora finiscono le consegne.</p>
+        <p>Il problema è stato rappresentato come un grafo: i nodi sono il deposito e i clienti, gli archi sono le strade con la distanza in km presa da Google Maps. Le distanze non sono uguali nei due sensi (per esempio Palagianello → Ginosa è diversa da Ginosa → Palagianello), per questo la matrice non è simmetrica.</p>
+        <p>Sono stati studiati due scenari:</p>
+        <ul>
+            <li><strong>Scenario A</strong>: un solo furgone grande che passa da tutti i clienti e torna al deposito (problema del commesso viaggiatore, TSP).</li>
+            <li><strong>Scenario B</strong>: due furgoni piccoli uguali che si dividono i clienti. Nessuno dei due da solo può portare tutta la merce, quindi servono per forza tutti e due (problema di instradamento dei veicoli, VRP).</li>
+        </ul>
+        <p>Il programma Python prova tutte le soluzioni possibili (enumerazione completa), scarta quelle che non rispettano la capacità dei furgoni e tiene quella con meno chilometri.</p>
+    </section>
+
+    <section id="dati">
+        <h2>2. I dati utilizzati</h2>
+
+        <h3>Clienti e quantità da consegnare</h3>
+        <div class="tabella-scorrevole">
+            <table id="tabella-clienti"></table>
+        </div>
+
+        <h3>Distanze stradali in km (riga = partenza, colonna = arrivo)</h3>
+        <div class="tabella-scorrevole">
+            <table id="tabella-distanze"></table>
+        </div>
+
+        <h3>Furgoni e prezzi di partenza</h3>
+        <div class="tabella-scorrevole">
+            <table id="tabella-furgoni"></table>
+        </div>
+        <p class="nota" id="nota-prezzi"></p>
+    </section>
+
+    <section id="percorsi">
+        <h2>3. Percorsi migliori trovati</h2>
+        <div class="elenco-scenari">
+            <article class="scheda scheda-scenario">
+                <div>
+                    <svg id="grafo-a" class="grafo" viewBox="0 0 560 380" role="img" aria-label="Grafo del percorso dello scenario A"></svg>
+                    <p class="nota">D è il deposito di Laterza. Il numero nel cerchio indica l'ordine di consegna, sulle frecce ci sono i km del tratto.</p>
+                </div>
+                <div>
+                    <h3>Scenario A: un furgone</h3>
+                    <div id="descrizione-a"></div>
+                </div>
+            </article>
+            <article class="scheda scheda-scenario">
+                <div>
+                    <svg id="grafo-b" class="grafo" viewBox="0 0 560 380" role="img" aria-label="Grafo dei percorsi dello scenario B"></svg>
+                    <p class="nota">Arancione il furgone 1, verde il furgone 2. Il numero nel cerchio indica l'ordine di consegna di quel furgone.</p>
+                </div>
+                <div>
+                    <h3>Scenario B: due furgoni</h3>
+                    <div id="descrizione-b"></div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="costi">
+        <h2>4. Confronto dei costi con i prezzi di partenza</h2>
+        <p>Le voci di costo considerate sono il noleggio giornaliero dei furgoni (costo fisso), il gasolio, l'usura del mezzo (gomme, manutenzione) e la paga degli autisti per le ore di guida e di scarico. Nello scenario B gli autisti sono due, quindi si pagano le ore di entrambi.</p>
+        <div class="due-colonne">
+            <div class="tabella-scorrevole">
+                <table id="tabella-costi"></table>
+            </div>
+            <div class="riquadro-grafico">
+                <canvas id="grafico-voci" aria-label="Grafico delle voci di costo dei due scenari"></canvas>
+            </div>
+        </div>
+        <p class="risultato" id="frase-convenienza"></p>
+    </section>
+
+    <section id="sensibilita">
+        <h2>5. Cosa succede se cambiano i prezzi</h2>
+        <p>Qui si cambia un prezzo alla volta e tutti gli altri restano quelli di partenza. Il punto in cui le due linee si incrociano è il prezzo per cui i due scenari costano uguale.</p>
+
+        <div class="griglia-grafici">
+            <div class="scheda">
+                <h3>Prezzo del gasolio</h3>
+                <div class="riquadro-grafico"><canvas id="grafico-gasolio"></canvas></div>
+                <p class="nota" id="pareggio-0"></p>
+            </div>
+            <div class="scheda">
+                <h3>Paga oraria dell'autista</h3>
+                <div class="riquadro-grafico"><canvas id="grafico-paga"></canvas></div>
+                <p class="nota" id="pareggio-1"></p>
+            </div>
+            <div class="scheda">
+                <h3>Noleggio di un furgone piccolo</h3>
+                <div class="riquadro-grafico"><canvas id="grafico-noleggio"></canvas></div>
+                <p class="nota" id="pareggio-2"></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="prova">
+        <h2>6. Prova tu a cambiare i prezzi</h2>
+        <p>I percorsi restano quelli trovati dal programma, cambiano solo i prezzi.</p>
+        <form id="modulo-prezzi" class="modulo">
+            <div class="campo">
+                <label for="campo-gasolio">Gasolio (€/litro)</label>
+                <input type="number" id="campo-gasolio" step="0.05" min="0">
+            </div>
+            <div class="campo">
+                <label for="campo-paga">Paga autista (€/ora)</label>
+                <input type="number" id="campo-paga" step="0.5" min="0">
+            </div>
+            <div class="campo">
+                <label for="campo-noleggio-grande">Noleggio furgone grande (€/giorno)</label>
+                <input type="number" id="campo-noleggio-grande" step="1" min="0">
+            </div>
+            <div class="campo">
+                <label for="campo-noleggio-piccolo">Noleggio furgone piccolo (€/giorno)</label>
+                <input type="number" id="campo-noleggio-piccolo" step="1" min="0">
+            </div>
+            <button type="submit" class="bottone">Calcola</button>
+        </form>
+        <div id="risultato-prova" class="risultato" aria-live="polite"></div>
+    </section>
+
+</main>
+
+<footer class="piede">
+    <div class="contenitore">
+        <p>Project Work - Tommaso Rizzi. I risultati vengono dal file risultati.js creato dal programma consegne.py.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="risultati.js"></script>
+<script src="grafici.js"></script>
+</body>
+</html>

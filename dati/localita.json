@@ -1,0 +1,14 @@
+{
+  "deposito": {
+    "nome": "Laterza",
+    "latitudine": 40.6286,
+    "longitudine": 16.7975
+  },
+  "clienti": [
+    { "nome": "Ginosa",             "merce_da_consegnare_kg": 350, "latitudine": 40.5786, "longitudine": 16.7567 },
+    { "nome": "Castellaneta",       "merce_da_consegnare_kg": 300, "latitudine": 40.6297, "longitudine": 16.9397 },
+    { "nome": "Palagianello",       "merce_da_consegnare_kg": 200, "latitudine": 40.6094, "longitudine": 16.9772 },
+    { "nome": "Santeramo in Colle", "merce_da_consegnare_kg": 250, "latitudine": 40.7942, "longitudine": 16.7569 },
+    { "nome": "Matera",             "merce_da_consegnare_kg": 400, "latitudine": 40.6664, "longitudine": 16.6043 }
+  ]
+}

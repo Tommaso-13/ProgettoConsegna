@@ -1,0 +1,11 @@
+{
+  "spiegazione": "Km di strada presi da Google Maps. Per ogni paese di partenza ci sono i km per arrivare agli altri paesi. Andata e ritorno possono essere diversi.",
+  "partenza_da": {
+    "Laterza":            { "Ginosa": 8.3,  "Castellaneta": 15.3, "Palagianello": 21.0, "Santeramo in Colle": 21.9, "Matera": 22.0 },
+    "Ginosa":             { "Laterza": 8.3,  "Castellaneta": 24.6, "Palagianello": 27.1, "Santeramo in Colle": 29.5, "Matera": 24.4 },
+    "Castellaneta":       { "Laterza": 15.3, "Ginosa": 24.6, "Palagianello": 8.8,  "Santeramo in Colle": 33.2, "Matera": 33.1 },
+    "Palagianello":       { "Laterza": 21.0, "Ginosa": 28.2, "Castellaneta": 9.1,  "Santeramo in Colle": 40.2, "Matera": 46.3 },
+    "Santeramo in Colle": { "Laterza": 21.9, "Ginosa": 29.2, "Castellaneta": 33.4, "Palagianello": 42.0, "Matera": 21.0 },
+    "Matera":             { "Laterza": 22.0, "Ginosa": 24.6, "Castellaneta": 33.2, "Palagianello": 46.3, "Santeramo in Colle": 21.9 }
+  }
+}

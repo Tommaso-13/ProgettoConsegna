@@ -1,0 +1,25 @@
+{
+  "prezzi": {
+    "gasolio_euro_al_litro": 1.75,
+    "paga_autista_euro_all_ora": 18
+  },
+  "viaggio": {
+    "velocita_media_km_all_ora": 50,
+    "minuti_di_scarico_per_cliente": 15,
+    "ora_di_partenza_dal_deposito": 6
+  },
+  "furgone_grande_scenario_a": {
+    "modello": "Iveco Daily 50C",
+    "capacita_kg": 2000,
+    "noleggio_euro_al_giorno": 110,
+    "km_con_un_litro": 9,
+    "usura_euro_al_km": 0.12
+  },
+  "furgone_piccolo_scenario_b": {
+    "modello": "Fiat Doblò Maxi",
+    "capacita_kg": 900,
+    "noleggio_euro_al_giorno": 65,
+    "km_con_un_litro": 15,
+    "usura_euro_al_km": 0.07
+  }
+}
